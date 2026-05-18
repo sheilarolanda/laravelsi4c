@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Berita;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
-class BeritaController extends Controller
+class ProdiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //akses model Berita
-        $result = Berita::all(); // select * from berita
-        // dd($result); // dump data
-        // kirim data berita ke view
-        return view('berita.index', compact('result'));
+        $prodis = Prodi::with('fakultas')->get();
+        return view('prodi.index', compact('prodis'));
     }
 
     /**
@@ -38,7 +35,7 @@ class BeritaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Berita $berita)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -46,7 +43,7 @@ class BeritaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Berita $berita)
+    public function edit(Prodi $prodi)
     {
         //
     }
@@ -54,7 +51,7 @@ class BeritaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Berita $berita)
+    public function update(Request $request, Prodi $prodi)
     {
         //
     }
@@ -62,7 +59,7 @@ class BeritaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Berita $berita)
+    public function destroy(Prodi $prodi)
     {
         //
     }
